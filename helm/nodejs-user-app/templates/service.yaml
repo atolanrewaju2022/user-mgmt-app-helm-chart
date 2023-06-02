@@ -1,15 +1,16 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "nodejs-user-app.fullname" . }}
+  name: {{ .Values.application.name }}-svc
+  namespace: {{.Values.namespace.name}}
   labels:
-    {{- include "nodejs-user-app.labels" . | nindent 4 }}
+    app: {{ .Values.application.name }}-svc
 spec:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
-      targetPort: http
-      protocol: TCP
-      name: http
+      targetPort: {{ .Values.service.targetPort }}
+      protocol: {{ .Values.service.protocol }}
+      name: {{ .Values.service.name }}
   selector:
-    {{- include "nodejs-user-app.selectorLabels" . | nindent 4 }}
+    app: {{ .Values.application.labels }}
