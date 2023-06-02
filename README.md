@@ -25,24 +25,3 @@ data:
 Then restart the argocd-server deployment
 ```
 
-# Download istio
-```bash 
-curl -L https://istio.io/downloadIstio | sh -
-# Move to the Istio package directory. For example, if the package is istio-1.16.2:
-cd istio-1.16.2
-
-# Add the istioctl client to your path (Linux or macOS)
-export PATH=$PWD/bin:$PATH
-
-# Istio installation
-istioctl install 
-
-```
-# Deploy istio Gateway and Virtualservice
-
-```bash
-kubectl apply -f istio-gateway.yml   
-kubectl apply -f istio-virtualservice.yml 
-
-kubectl get gateway -n argocd 
-kubectl get virtualservice -n argocd 
