@@ -1,12 +1,16 @@
 #Test deploying to kubernetes cluster before setting up the pipeline
 #Change directory to helm chart folder
-cd account-manager/helm/account_manager
+cd 
 
 #Install the chart with a release name called account-manager 
+```bash
 helm install account-manager  .  -f dev-values.yaml
+```
 
 #Upgrade the Helm Chart with new image 
+```bash
 helm upgrade --namespace $NAMESPACE  -f  ./helm/account_manager/dev-values.yaml --set image.repository=$ECR_REGISTRY/$DOCKER_TAG  --set image.tag=$BITBUCKET_COMMIT --install $HELM_CHART $HELM_RELEASE
+```
 
 #Install argocd on EKS Cluster
 
