@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: ""
+    repoURL: "https://github.com/atolanrewaju2022/user-mgmt-app-helm-chart.git"
     targetRevision: HEAD
     path: kubernetes
   destination:
