@@ -1,7 +1,7 @@
 #Test deploying to kubernetes cluster before setting up the pipeline
 #Change directory to helm chart folder
 ```bash
-cd  user-mgmt-app-helm-chart/helm/nodejs-user-app/
+cd  user-mgmt-app-helm-chart/helm/nodejs-user-app
 ```
 
 #Install the chart with a release name called account-manager 
