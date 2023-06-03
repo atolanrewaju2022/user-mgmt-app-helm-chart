@@ -1,17 +1,17 @@
 #Test deploying to kubernetes cluster before setting up the pipeline
 
 ```bash
-cd  user-mgmt-app-helm-chart/helm/nodejs-user-app
+cd helm/nodejs-user-app
 ```
 
-#Install the chart with a release name called account-manager 
+#Install the chart with a release name called nodejs-user-app
 ```bash
-helm install account-manager  .  -f dev-values.yaml
+helm install nodejs-user-app  .  -f dev-values.yaml
 ```
 
 #Upgrade the Helm Chart with new image 
 ```bash
-helm upgrade --namespace $NAMESPACE  -f  ./helm/account_manager/dev-values.yaml --set image.repository=$ECR_REGISTRY/$DOCKER_TAG  --set image.tag=$BITBUCKET_COMMIT --install $HELM_CHART $HELM_RELEASE
+helm upgrade --namespace $NAMESPACE  -f  ./helm/nodejs-user-app/dev-values.yaml --set image.repository=$ECR_REGISTRY/$DOCKER_TAG  --set image.tag=$BITBUCKET_COMMIT --install $HELM_CHART $HELM_RELEASE
 ```
 
 #Install argocd on EKS Cluster
@@ -32,12 +32,11 @@ kubectl get namespace -L istio-injection
 
 ```bash
 
-# kubectl edit cm argocd-cmd-params-cm
-# and add server.insecure option
+# kubectl edit cm argocd-cmd-params-cm and add server.insecure option
 
 data:
   server.insecure: "true"
   
-Then restart the argocd-server deployment
+#Then restart the argocd-server deployment
 ```
 
