@@ -1,5 +1,5 @@
 image:
-  repository: 060866400122.dkr.ecr.us-east-1.amazonaws.com/user-mgmt
+  repository: 873079457075.dkr.ecr.us-east-1.amazonaws.com/user-mgmt
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "1.1.0"
